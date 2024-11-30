@@ -86,7 +86,7 @@ if __name__ == "__main__":
     
     # parse arguments
     parser = ArgumentParser()
-    parser.add_argument("-i","--input",default="instances/small_input_instance.in",type=str,help=("The instance file."))
+    parser.add_argument("-i","--input",default="instances/small_input_sat.in",type=str,help=("The instance file."))
     parser.add_argument("-o", "--output", default="formula.cnf", type=str, help=("The output file of cnf formula."))
     parser.add_argument("-s", "--solver", default="glucose", type=str, help=("The solver to be used. Default is glucose."))
     parser.add_argument("-v", "--verbosity", default=1, type=int, help=("The verbosity level of the sat solver. Default is 1."))

@@ -80,3 +80,28 @@ Each subset represents a combination of sets that could be unselected
 `(Si1 v Si2 v ...v Sil)`
 
 This clause ensures that at least one of the sets in this combination is selected
+
+
+
+## Basic Usage
+
+Run the solver using the following command:
+
+python3 set_packing.py [-h HELP] [-i INPUT] [-o OUTPUT] [-s SOLVER] [-v {0,1}]
+
+### Command-line Options:
+
+- `-h, --help`  
+  Show a help message and exit.
+
+- `-i INPUT, --input INPUT`  
+  The instance file containing the input data. Default: `"instances/small_input_sat.in"`.
+
+- `-o OUTPUT, --output OUTPUT`  
+  Specify the output file for the DIMACS format CNF formula.
+
+- `-s SOLVER, --solver SOLVER`  
+  Specify the SAT solver to be used. Default: `glucose`.
+
+- `-v {0,1}, --verb {0,1}`  
+  Set the verbosity level of the SAT solver. `0` for minimal output and `1` for detailed output.
