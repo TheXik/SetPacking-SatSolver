@@ -1,5 +1,6 @@
 import subprocess
 from argparse import ArgumentParser
+import time
 
 def load_instance(input_file):
     print("- LOADING INPUT FILE")
@@ -83,7 +84,8 @@ def print_output_result(result,sets):
     
 
 if __name__ == "__main__":
-    
+    start_time = time.time()
+
     # parse arguments
     parser = ArgumentParser()
     parser.add_argument("-i","--input",default="instances/small_input_sat.in",type=str,help=("The instance file."))
@@ -103,3 +105,5 @@ if __name__ == "__main__":
 
     # print human readable output
     print_output_result(result,sets)
+    end_time = time.time()
+    print(f"The program was running for {end_time - start_time:.2f} seconds")

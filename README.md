@@ -116,9 +116,11 @@ Below is a table listing the example instances, including their names, the numbe
 
 | Instance Name                   | Number of Sets | Target Packing Size (T) | Time Taken (seconds) |
 |---------------------------------|----------------|--------------------------|-----------------------|
-| small_input_unsat | 5              | 3                        | 0.05                 |
-| small_input_sat  | 10             | 5                        | 0.12                 |
-| normal_running_time_input_unsat | 20             | 10                       | 0.45                 |
-| normal_running_time_input_sat   | 6              | 2                        | 0.03                 |
-| high_running_time_unsat         | 15             | 7                        | 0.25                 |
-| high_running_time_sat           | 30             | 15                       | 1.10                 |
+| small_input_unsat               | 5              | 3                        | 0.1                   |
+| small_input_sat                 | 5              | 3                        | 0.1                   |
+| normal_running_time_input_unsat | 24             | 6                        | 7.18                  |
+| normal_running_time_input_sat   | 24             | 6                        | 7.01                  |
+| medium_running_time_unsat       | 23             | 7                        | 32.58                 |
+| medium_running_time_sat         | 23             | 7                        | 42.07                 |
+| high_running_time_unsat         | 23             | 8                        | 94.78                 |
+| high_running_time_sat           | 23             | 8                        | 98.78                 |
