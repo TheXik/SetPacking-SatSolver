@@ -2,20 +2,19 @@
 
 ## Set Packing Problem Description
 
-Set packing is a classical NP-complete problem in computational compleSity theory and combinatorics, and was one of Karp's 21 NP-complete problems. Suppose one has a finite set `S` and a subsets `S`. Then, the set packing problem asks if some `T` subsets are pairwise disjoint (in other words, no two of them share an element).
+Set packing is a classical NP-complete problem in computational complexity theory and combinatorics, and was one of Karp's 21 NP-complete problems. Suppose one has a finite set `S` and a list of subsets of `S`. Then, the set packing problem asks if some `T` subsets are pairwise disjoint (in other words, no two of them share an element).
 
 More formally, given a universe `U` and a family `S` of subsets of `U`, a packing is a subfamily `C ⊆ S` of sets such that all sets in `C` are pairwise disjoint. The size of the packing is `|C|`. 
 
-The input is an integer : set_packing_size `T` and sets `S` each on different line splitted with a space.  
+The input is an integer : set_packing_size `T` and sets `S` each on different line split with a space.  
 The question is whether there is a set packing of size `T` or more.
+I assume that number of sets is equal or greater than the set packing size
 
 
 ## How to Use
 
 I am using sat solver `Glucose 4.2.1`.
-
-### To compile you need
-
+###  Must install
 1. `Python 3` installed
 2. A **UNIX-based system** (or WSL for Windows users).
 3. A compiled version of the **Glucose SAT solver**:
@@ -124,3 +123,11 @@ Below is a table listing the example instances, including their names, the numbe
 | medium_running_time_sat         | 23             | 7                        | 42.07                 |
 | high_running_time_unsat         | 23             | 8                        | 94.78                 |
 | high_running_time_sat           | 23             | 8                        | 98.78                 |
+
+
+## Experiments
+I have experimeted with this quite a bit when I was creating instances for this project, but some small observations can be made.
+The encoding can take big amount of time for larger instances for example when the number of sets
+`30_sets_T4 - 111.92 sec encoding | satsolver close to 0 sec`
+`20_sets_T12 - close to 0 sec encoding | satsolver 42.30 sec`
+The sat solver will take bigger ammount of time when there is larger `set_packing_size`

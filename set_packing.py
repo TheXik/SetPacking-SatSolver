@@ -3,17 +3,17 @@ from argparse import ArgumentParser
 import time
 
 def load_instance(input_file):
+    # load the instance from the input
     print("- LOADING INPUT FILE")
     with open(input_file, "r") as f:
         lines = f.readlines()
        
-    set_packing_size = int(lines[0].strip())
-    sets = []
-    
+    set_packing_size = int(lines[0].strip()) # number of sets to be selected
+    sets = [] # list of sets
     for line in lines[1:]:
         num = list(map(int, line.strip().split()))
         sets.append(num)
-    return sets, set_packing_size
+    return sets, set_packing_size # returns sets and set_packing_size
 
 
 def encode(sets, set_packing_size):
@@ -22,15 +22,16 @@ def encode(sets, set_packing_size):
 
     # CONSTRAINTS FOR SET PACKING
 
+    # Each set can be selected at most once
     for i, set1 in enumerate(sets,start= 1): 
         for j, set2 in enumerate(sets[i:], start=i + 1):
             for x in set1:
                 for y in set2:
-                    if x == y: # if the elements of the set are same then the sets are not disjoint therefore add set as variable to cnf 
+                    if x == y: # if the elements of the set are same then add set as variable to cnf because they cannot be selected together
                         cnf.append([-i, -j,0])
 
+    # Select at least set_packing_size sets
     length = len(sets) - set_packing_size + 1
-    
     combinations_list = []
     create_comb(0, [], length, sets, combinations_list)
     for combination in combinations_list:
@@ -39,6 +40,7 @@ def encode(sets, set_packing_size):
     return cnf
 
 def create_comb(start, curr_combination, combination_size, sets, combinations_list):
+    # recursively generates all combinations of a combination_size from the sets
     if len(curr_combination) == combination_size:
         combinations_list.append(curr_combination.copy())
         return
@@ -52,6 +54,7 @@ def create_comb(start, curr_combination, combination_size, sets, combinations_li
 
 
 def run_solver(cnf, nr_vars, output_name, solver_name, verbosity):
+    # run the sat solver on the cnf formula
     print(" - CALLING SAT SOLVER")
     with open(output_name, "w") as f:
         f.write("p cnf {} {}\n".format(nr_vars, len(cnf)))
@@ -61,9 +64,9 @@ def run_solver(cnf, nr_vars, output_name, solver_name, verbosity):
     
     
 def print_output_result(result,sets):
-    
+    # print the result of the sat solver
     print(result.stdout.decode('utf-8'))
-    if result.returncode == 20:
+    if result.returncode == 20: # if the result is unsatisfiable
         return
     print("--------------PRINTING HUMAN READABLE OUTPUT RESULT--------------")
     print("\n")
