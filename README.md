@@ -6,8 +6,8 @@ Set packing is a classical NP-complete problem in computational complexity theor
 
 More formally, given a universe `U` and a family `S` of subsets of `U`, a packing is a subfamily `C ⊆ S` of sets such that all sets in `C` are pairwise disjoint. The size of the packing is `|C|`. 
 
-The input is a `n` number of sets each on different line `S` and an integer : set_packing_size `T`
-- The question is whether there is a set packing of size `T` or more.
+The input is an integer : set_packing_size `T` and sets `S` each on different line splitted with a space.  
+The question is whether there is a set packing of size `T` or more.
 
 
 ## How to Use
@@ -27,3 +27,18 @@ I am using sat solver `Glucose 4.2.1`.
   - A target set packing size `T`.
   - A set of `n` subsets `S`, each defined on a separate line.
 - **Example Input** (`instances/small_input_sat.in`):
+    1. The first line specifies the target packing size, `T = 3`.
+    2. Subsequent lines represent the subsets:
+        - Set 1: 1 2
+        - Set 2: 3 4
+        - Set 3: 2 3
+        - Set 4: 5
+        - Set 5: 5 6
+
+    The goal is to find at least 3 subsets that are pairwise disjoint (no overlapping elements)
+    #### Output
+
+    The SAT solver outputs the solution as SATISFIABLE. 
+    And as we can see the 1. set  2. and 4. are pairwise disjoint they share no same element.
+
+
