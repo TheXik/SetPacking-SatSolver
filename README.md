@@ -6,7 +6,7 @@ Set packing is a classical NP-complete problem in computational complexity theor
 
 More formally, given a universe `U` and a family `S` of subsets of `U`, a packing is a subfamily `C ⊆ S` of sets such that all sets in `C` are pairwise disjoint. The size of the packing is `|C|`. 
 
-The input is an integer : set_packing_size `T` and sets `S` each on different line split with a space.  
+The input is an integer : set_packing_size `T` and sets `S` each on different line split with space.  
 The question is whether there is a set packing of size `T` or more.
 I assume that number of sets is equal or greater than the set packing size
 
@@ -59,7 +59,7 @@ I am using sat solver `Glucose 4.2.1`.
 ## Constraints
 - For this problem I have chosen to use sets variables.
 
-For each set in input I create a `Si` varibale that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected for the pairwise disjoint 
+For each set in input I create a `Si` variable that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected for the pairwise disjoint 
 
 1. constraint is Disjointness of the sets 
 We need to ensure that no two selected sets share the same element.
@@ -70,7 +70,7 @@ This means that at least one of the two sets Si v Sj cannot be selected
 
 2. Constraint is that we need to select at least T sets
 
-We achive this with generating all possible combinations of length =`len(sets)`−(setpacking_size`T`)+1
+We achieve this with generating all possible combinations of length =`len(sets)`−(setpacking_size`T`)+1
 Each subset represents a combination of sets that could be unselected
 
 - Generating all possible combinations of length (l) - > (Si1,Si2,...,Sil)
@@ -130,4 +130,4 @@ I have experimeted with this quite a bit when I was creating instances for this 
 The encoding can take big amount of time for larger instances for example when the number of sets
 `30_sets_T4 - 111.92 sec encoding | satsolver close to 0 sec`
 `20_sets_T12 - close to 0 sec encoding | satsolver 42.30 sec`
-The sat solver will take bigger ammount of time when there is larger `set_packing_size`
+The sat solver will take bigger amount of time when there is larger `set_packing_size`
