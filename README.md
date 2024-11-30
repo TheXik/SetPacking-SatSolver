@@ -105,3 +105,20 @@ python3 set_packing.py [-h HELP] [-i INPUT] [-o OUTPUT] [-s SOLVER] [-v {0,1}]
 
 - `-v {0,1}, --verb {0,1}`  
   Set the verbosity level of the SAT solver. `0` for minimal output and `1` for detailed output.
+
+
+## Example Instances
+
+Below is a table listing the example instances
+## Example Instances
+
+Below is a table listing the example instances, including their names, the number of sets, the target packing size (T), and the time taken to run:
+
+| Instance Name                   | Number of Sets | Target Packing Size (T) | Time Taken (seconds) |
+|---------------------------------|----------------|--------------------------|-----------------------|
+| small_input_unsat | 5              | 3                        | 0.05                 |
+| small_input_sat  | 10             | 5                        | 0.12                 |
+| normal_running_time_input_unsat | 20             | 10                       | 0.45                 |
+| normal_running_time_input_sat   | 6              | 2                        | 0.03                 |
+| high_running_time_unsat         | 15             | 7                        | 0.25                 |
+| high_running_time_sat           | 30             | 15                       | 1.10                 |
