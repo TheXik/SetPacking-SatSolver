@@ -15,7 +15,7 @@ I assume that number of sets is equal or greater than the set packing size
 
 I am using sat solver `Glucose 4.2.1`.
 ###  Must install
-1. `Python 3` installed
+1. `Python 3` 
 2. A **UNIX-based system** (or WSL for Windows users).
 3. A compiled version of the **Glucose SAT solver**:
 
@@ -24,7 +24,7 @@ I am using sat solver `Glucose 4.2.1`.
 
 - **Instance File**: The input file describes:
   - A target set packing size `T`.
-  - A set of `n` subsets `S`, each defined on a separate line.
+  - A set of `n` subsets `S`, each defined on a separate line, with its elements
 - **Example Input** (`instances/small_input_sat.in`):
 
     first line`set packing size`
@@ -59,9 +59,9 @@ I am using sat solver `Glucose 4.2.1`.
 ## Constraints
 - For this problem I have chosen to use sets variables.
 
-For each set in input I create a `Si` variable that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected for the pairwise disjoint 
+For each set in input I create a `Si` variable that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected
 
-1. constraint is Disjointness of the sets 
+1. Constraint is disjointness of the sets 
 We need to ensure that no two selected sets share the same element.
 Traverse throught every pair of sets and check whether they have same element if yes then we add 
 this clause to our cnf formula `(-Si v -Sj)`
@@ -70,7 +70,9 @@ This means that at least one of the two sets Si v Sj cannot be selected
 
 2. Constraint is that we need to select at least T sets
 
-We achieve this with generating all possible combinations of length =`len(sets)`−(setpacking_size`T`)+1
+We achieve this with generating all possible combinations of 
+length =`len(sets)`−`(setpacking_size|T)`+1
+
 Each subset represents a combination of sets that could be unselected
 
 - Generating all possible combinations of length (l) - > (Si1,Si2,...,Sil)
@@ -108,10 +110,7 @@ python3 set_packing.py [-h HELP] [-i INPUT] [-o OUTPUT] [-s SOLVER] [-v {0,1}]
 
 ## Example Instances
 
-Below is a table listing the example instances
-## Example Instances
-
-Below is a table listing the example instances, including their names, the number of sets, the target packing size (T), and the time taken to run:
+Below is a table listing the example instances.
 
 | Instance Name                   | Number of Sets | Target Packing Size (T) | Time Taken (seconds) |
 |---------------------------------|----------------|--------------------------|-----------------------|
@@ -126,7 +125,7 @@ Below is a table listing the example instances, including their names, the numbe
 
 
 ## Experiments
-I have experimeted with this quite a bit when I was creating instances for this project, but some small observations can be made.
+I have experimeted with this quite a bit when I was creating instances for this project, but some observations can be made.
 The encoding can take big amount of time for larger instances for example when the number of sets
 `30_sets_T4 - 111.92 sec encoding | satsolver close to 0 sec`
 `20_sets_T12 - close to 0 sec encoding | satsolver 42.30 sec`
