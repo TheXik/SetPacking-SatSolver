@@ -112,7 +112,7 @@ python3 set_packing.py [-h HELP] [-i INPUT] [-o OUTPUT] [-s SOLVER] [-v {0,1}]
 
 Below is a table listing the example instances.
 
-| Instance Name                   | Number of Sets | Target Packing Size (T) | Time Taken (seconds) |
+| Instance Name                   | Number of Sets | Set Packing Size (T) | Time Taken (seconds) |
 |---------------------------------|----------------|--------------------------|-----------------------|
 | small_input_unsat               | 5              | 3                        | 0.1                   |
 | small_input_sat                 | 5              | 3                        | 0.1                   |
