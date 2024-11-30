@@ -27,6 +27,14 @@ I am using sat solver `Glucose 4.2.1`.
   - A target set packing size `T`.
   - A set of `n` subsets `S`, each defined on a separate line.
 - **Example Input** (`instances/small_input_sat.in`):
+    first line`set packing size`
+    second line `element_of_set element_of_set element_of_set .....`
+    third line `element_of_set element_of_set element_of_set .....`
+    fourth line `element_of_set element_of_set element_of_set .....`
+    fifth line `...................`
+    `...........`
+    n-th line `....................`
+
     1. The first line specifies the target packing size, `T = 3`.
     2. Subsequent lines represent the subsets:
         - Set 1: 1 2
@@ -42,3 +50,4 @@ I am using sat solver `Glucose 4.2.1`.
     And as we can see the 1. set  2. and 4. are pairwise disjoint they share no same element.
 
 
+## Constraints
