@@ -28,11 +28,17 @@ I am using sat solver `Glucose 4.2.1`.
   - A set of `n` subsets `S`, each defined on a separate line.
 - **Example Input** (`instances/small_input_sat.in`):
     first line`set packing size`
+
     second line `element_of_set element_of_set element_of_set .....`
+
     third line `element_of_set element_of_set element_of_set .....`
+
     fourth line `element_of_set element_of_set element_of_set .....`
+
     fifth line `...................`
+
     `...........`
+
     n-th line `....................`
 
     1. The first line specifies the target packing size, `T = 3`.
