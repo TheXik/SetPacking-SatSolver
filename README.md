@@ -2,7 +2,7 @@
 
 ## Set Packing Problem Description
 
-Set packing is a classical NP-complete problem in computational complexity theory and combinatorics, and was one of Karp's 21 NP-complete problems. Suppose one has a finite set `S` and a subsets `S`. Then, the set packing problem asks if some `T` subsets are pairwise disjoint (in other words, no two of them share an element).
+Set packing is a classical NP-complete problem in computational compleSity theory and combinatorics, and was one of Karp's 21 NP-complete problems. Suppose one has a finite set `S` and a subsets `S`. Then, the set packing problem asks if some `T` subsets are pairwise disjoint (in other words, no two of them share an element).
 
 More formally, given a universe `U` and a family `S` of subsets of `U`, a packing is a subfamily `C ⊆ S` of sets such that all sets in `C` are pairwise disjoint. The size of the packing is `|C|`. 
 
@@ -27,6 +27,7 @@ I am using sat solver `Glucose 4.2.1`.
   - A target set packing size `T`.
   - A set of `n` subsets `S`, each defined on a separate line.
 - **Example Input** (`instances/small_input_sat.in`):
+
     first line`set packing size`
 
     second line `element_of_set element_of_set element_of_set .....`
@@ -37,7 +38,7 @@ I am using sat solver `Glucose 4.2.1`.
 
     fifth line `...................`
 
-    `...........`
+    `.........................................`
 
     n-th line `....................`
 
@@ -53,7 +54,29 @@ I am using sat solver `Glucose 4.2.1`.
     #### Output
 
     The SAT solver outputs the solution as SATISFIABLE. 
-    And as we can see the 1. set  2. and 4. are pairwise disjoint they share no same element.
+    And as we can see the 1. set  2. and 5. are pairwise disjoint they share no same element.
 
 
 ## Constraints
+- For this problem I have chosen to use sets variables.
+
+For each set in input I create a `Si` varibale that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected for the pairwise disjoint 
+
+1. constraint is Disjointness of the sets 
+We need to ensure that no two selected sets share the same element.
+Traverse throught every pair of sets and check whether they have same element if yes then we add 
+this clause to our cnf formula `(-Si v -Sj)`
+
+This means that at least one of the two sets Si v Sj cannot be selected
+
+2. Constraint is that we need to select at least T sets
+
+We achive this with generating all possible combinations of length =`len(sets)`−(setpacking_size`T`)+1
+Each subset represents a combination of sets that could be unselected
+
+- Generating all possible combinations of length (l) - > (Si1,Si2,...,Sil)
+
+- For each combination of variables(Si1,Si2,...,Sil) add clause to the cnf formula 
+`(Si1 v Si2 v ...v Sil)`
+
+This clause ensures that at least one of the sets in this combination is selected

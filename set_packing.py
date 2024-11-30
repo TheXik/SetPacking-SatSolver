@@ -29,11 +29,11 @@ def encode(sets, set_packing_size):
                         cnf.append([-i, -j,0])
 
     length = len(sets) - set_packing_size + 1
-    if length > 0:
-        combinations_list = []
-        create_comb(0, [], length, sets, combinations_list)
-        for combination in combinations_list:
-            cnf.append([i + 1 for i in combination] + [0])
+    
+    combinations_list = []
+    create_comb(0, [], length, sets, combinations_list)
+    for combination in combinations_list:
+        cnf.append([i + 1 for i in combination] + [0])
 
     return cnf
 
@@ -46,6 +46,7 @@ def create_comb(start, curr_combination, combination_size, sets, combinations_li
         curr_combination.append(i)
         create_comb(i + 1, curr_combination, combination_size, sets, combinations_list)
         curr_combination.pop()
+        
     
 
 
@@ -77,7 +78,7 @@ def print_output_result(result,sets):
                 print(".set | ELEMENTS :", end=" ")
                 for j,element in enumerate(sets[i]):
                     print(element, end=" ")
-                print("| Order of set in the input is :",i+1, end="\n")
+                print("\n")
             return
     
 
