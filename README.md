@@ -59,11 +59,11 @@ I am using sat solver `Glucose 4.2.1`.
 ## Constraints
 - For this problem I have chosen to use sets variables.
 
-For each set in input I create a `Si` variable that represents that the current `Si` set is selected `-Si`(negation) represents that set isnt in selected
+For each set in input I create a `Si` variable that represents that the current `Si` set is selected `-Si`(negation) represents that the set is not selected
 
 1. Constraint is disjointness of the sets 
 We need to ensure that no two selected sets share the same element.
-Traverse throught every pair of sets and check whether they have same element if yes then we add 
+Traverse every pair of sets and check whether they share an element. If they do, we add 
 this clause to our cnf formula `(-Si v -Sj)`
 
 This means that at least one of the two sets Si v Sj cannot be selected
